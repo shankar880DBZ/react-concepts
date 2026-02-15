@@ -1,16 +1,79 @@
-# React + Vite
+## Handling Multiple Inputs Using `useState` in React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+In this project, the **SimpleForm.jsx** component demonstrates how to handle multiple form inputs using a single state object with the `useState` hook.
 
-Currently, two official plugins are available:
+### ✅ Why use a single state object?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Instead of creating a separate state for every input field, we store all form values inside one object. This makes the form easier to manage, especially when working with multiple inputs.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🧠 State Structure
 
-## Expanding the ESLint configuration
+We create one state object that contains all form fields:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```jsx
+const [formData, setFormData] = useState({
+  first_name: "",
+  last_name: "",
+  phone_number: "",
+  email: "",
+  agree: false,
+});
+```
+
+Each key represents an input field.
+
+---
+
+### ✍️ Handling Multiple Inputs with One Function
+
+A single `inputHandler` function updates all inputs dynamically using the `name` attribute.
+
+```jsx
+const inputHandler = (e) => {
+  const { name, value, type, checked } = e.target;
+
+  setFormData({
+    ...formData,
+    [name]: type === "checkbox" ? checked : value,
+  });
+};
+```
+
+#### How it works:
+
+* Every input has a `name` attribute matching a key in the state.
+* The handler reads the input name.
+* The correct value inside the object is updated automatically.
+* Checkbox values use `checked` instead of `value`.
+
+---
+
+### 🧾 Example Input
+
+```jsx
+<input
+  type="text"
+  name="first_name"
+  value={formData.first_name}
+  onChange={inputHandler}
+/>
+```
+
+When the user types, React updates only that specific field inside the state object.
+
+---
+
+### 🚀 Benefits
+
+* Cleaner code
+* Reusable handler function
+* Easy form scaling
+* Better state management
+
+---
+
+### 📌 Summary
+
+Using a single state object with `useState` allows us to efficiently manage multiple form inputs in React. By using the input `name` attribute and a common change handler, we can update any field dynamically without writing separate logic for each input.
