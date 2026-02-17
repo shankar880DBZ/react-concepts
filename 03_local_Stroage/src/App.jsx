@@ -7,11 +7,11 @@ import ToDo from "./components/ToDoListProject/ToDo";
 const App = () => {
   return (
     <div>
-      {/* <LocalStorage_part_1/> */}
+      <LocalStorage_part_1/>
       {/* <LocalStorage_part_2/> */}
       {/* <LocalStorage_part_3/> */}
       {/* <LocalStorage_part_4/> */}
-      <ToDo/>
+      {/* <ToDo/> */}
      
 
      
