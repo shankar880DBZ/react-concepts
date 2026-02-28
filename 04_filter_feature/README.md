@@ -29,25 +29,6 @@ This application allows users to:
 
 ---
 
-## ⚙️ Technologies Used
-
-* React (Functional Components)
-* React Hooks (`useState`, `useEffect`)
-* JavaScript (ES6+)
-* Tailwind CSS
-* Browser LocalStorage API
-
----
-
-## 🧠 Concepts Covered
-
-* Controlled Components
-* Event Handling
-* State Management
-* Array Manipulation
-* Conditional Rendering
-* Side Effects with `useEffect`
-* Persistent Data Storage
 
 ---
 
@@ -211,58 +192,12 @@ Runs once when app loads.
 
 ---
 
-## 🎨 UI Behavior
 
-* Blue button → Add task
-* Yellow button → Update task
-* Cards generated dynamically using `.map()`
-* Responsive grid layout
 
----
 
-## 📸 Application Flow
 
-```
-User Input
-     ↓
-Form State Update
-     ↓
-Submit
-     ↓
-Add/Edit Task
-     ↓
-Render Task Cards
-     ↓
-Save to LocalStorage
-```
 
----
 
-## 🔥 Future Improvements
 
-* ✅ Mark task as completed
-* ✅ Search functionality
-* ✅ Dark/Light mode
-* ✅ Drag & Drop sorting
-* ✅ Backend database integration
 
----
 
-## 👨‍💻 Author
-
-Created for learning React fundamentals and CRUD operations.
-
----
-
-## ⭐ Learning Outcome
-
-After completing this project you understand:
-
-* How React handles forms
-* How to manage lists dynamically
-* How editing works in React apps
-* How to persist data without backend
-
----
-
-Happy Coding 🚀
