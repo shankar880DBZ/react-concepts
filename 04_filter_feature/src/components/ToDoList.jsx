@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+
 const ToDoList = () => {
   const [data, setData] = useState([]);
   const [formData, setFormData] = useState({
@@ -92,49 +91,35 @@ const ToDoList = () => {
         </div>
       </form>
       <div className="w-full mt-5 bg-zinc-900 p-5  ">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-2 ">
-          <AnimatePresence>
-            {data.map((item, index) => (
-              <motion.div
-                key={index}
-                layout
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -40 }}
-                transition={{ duration: 0.3 }}
-                className="bg-zinc-800 py-5 rounded-md">
-                <div className="text-center">
-                  <h5 className="text-xl font-medium tracking-tighter">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-2">
+          {data.map((item, index) => {
+            return (
+              <div className="bg-zinc-800  py-5 rounded-md" key={index}>
+                <div className="text-center ">
+                  <h5 className="text-center text-xl font-medium  tracking-tighter">
                     {item.task}
                   </h5>
                 </div>
-
                 <div className="p-2">
-                  <p className="text-start px-1 tracking-tighter">
+                  <p className="text-start px-1 tracking-tighter ">
                     {item.message}
                   </p>
                 </div>
-
-                <div className="grid grid-cols-2 gap-5 text-center px-4 mt-5">
-                  <motion.button
-                    whileHover={{ scale: 1.08 }}
-                    whileTap={{ scale: 0.9 }}
-                    onClick={() => editHandler(index)}
-                    className="px-4 py-2 bg-yellow-500 rounded-md">
+                <div className=" grid grid-cols-2 gap-5 text-center px-4 mt-5">
+                  <button
+                    className="px-4 py-2 bg-yellow-500 rounded-md hover:bg-yellow-700 cursor-pointer duration-700 active:scale-95 "
+                    onClick={() => editHandler(index)}>
                     Edit
-                  </motion.button>
-
-                  <motion.button
-                    whileHover={{ scale: 1.08 }}
-                    whileTap={{ scale: 0.9 }}
-                    onClick={() => deleteHandler(index)}
-                    className="px-4 py-2 bg-red-500 rounded-md">
+                  </button>
+                  <button
+                    className="px-4 py-2 bg-red-500 rounded-md  hover:bg-red-700 cursor-pointer duration-700 active:scale-95 "
+                    onClick={() => deleteHandler(index)}>
                     Delete
-                  </motion.button>
+                  </button>
                 </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
